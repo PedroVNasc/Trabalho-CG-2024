@@ -1,2 +1,18 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+arvore/casca.jpg filter=lfs diff=lfs merge=lfs -text
+caminho/caminho.jpg filter=lfs diff=lfs merge=lfs -text
+lobo/lobo.jpg filter=lfs diff=lfs merge=lfs -text
+caixa/caixa.jpg filter=lfs diff=lfs merge=lfs -text
+caminho/caminho2.jpg filter=lfs diff=lfs merge=lfs -text
+caminho/caminho3.jpg filter=lfs diff=lfs merge=lfs -text
+casa/casa.jpg filter=lfs diff=lfs merge=lfs -text
+gato/gato.jpg filter=lfs diff=lfs merge=lfs -text
+torre/torre.jpg filter=lfs diff=lfs merge=lfs -text
+arvore/folhas.png filter=lfs diff=lfs merge=lfs -text
+gaveta/gaveta.png filter=lfs diff=lfs merge=lfs -text
+skybox/skybox.png filter=lfs diff=lfs merge=lfs -text
+terreno/terreno.png filter=lfs diff=lfs merge=lfs -text
+golem/golem.tif filter=lfs diff=lfs merge=lfs -text
