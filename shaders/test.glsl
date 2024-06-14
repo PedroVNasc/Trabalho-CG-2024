@@ -1,14 +1,15 @@
-uniform sampler2D samplerTexture;
-
 uniform vec3 lightPos; // define coordenadas de posicao da luz
 uniform float ka; // coeficiente de reflexao ambiente
 uniform float kd; // coeficiente de reflexao difusa
 
 vec3 lightColor = vec3(1.0, 1.0, 1.0);
 
-varying vec3 out_fragPos; // recebido do vertex shader
-varying vec2 out_texture;
+varying vec2 out_texture; // recebido do vertex shader
 varying vec3 out_normal; // recebido do vertex shader
+varying vec3 out_fragPos; // recebido do vertex shader
+
+uniform sampler2D samplerTexture;
+
 
 void main(){
     vec3 ambient = ka * lightColor;             
@@ -20,6 +21,5 @@ void main(){
     
     vec4 texture = texture2D(samplerTexture, out_texture);
     vec4 result = vec4((ambient + diffuse),1.0) * texture; // aplica iluminacao
-    // gl_FragColor = result;
-    gl_FragColor = texture;
+    gl_FragColor = result;
 }
