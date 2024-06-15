@@ -57,7 +57,7 @@ vec3 phong(vec3 position, vec3 color, float reach, float intensity) {
     float diff = max(dot(N, L), 0.0); // verifica limite angular (entre 0 e 90)
 
     float dist = distance(position, out_position);
-    float fading = max((reach - dist), 0.0);
+    float fading = max((pow(reach - dist, 2.0) / pow(reach, 2.0)) * intensity, 0.0);
 
     vec3 diffuse = kd * diff * fading * color; // iluminacao difusa
 
