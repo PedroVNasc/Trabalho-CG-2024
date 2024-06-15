@@ -29,12 +29,14 @@ void main(){
     for (int i = 0; i < index_max; i++) {
         vec3 lightPos = lights_position[i];
         vec3 lightColor = lights_color[i];
+        float reach = lights_reach[i];
 
         vec3 norm = normalize(out_normal); // normaliza vetores perpendiculares
         vec3 lightDir = normalize(lightPos - out_fragPos); // direcao da luz
         float diff = max(dot(norm, lightDir), 0.0); // verifica limite angular (entre 0 e 90)
 
-        float fading = max((10.0 - distance(lightPos, out_fragPos)), 0.0);
+        float dist = distance(lightPos, out_fragPos);
+        float fading = max((reach - dist), 0.0);
 
         vec3 diffuse = kd * diff * fading * lightColor; // iluminacao difusa
     
@@ -43,7 +45,7 @@ void main(){
 
         float spec = pow(max(dot(viewDir, reflectDir), 0.0), ns);
         
-        vec3 specular = ks * spec * lightColor;
+        vec3 specular = ks * spec* fading * lightColor;
 
         sum += diffuse + specular;
     }
