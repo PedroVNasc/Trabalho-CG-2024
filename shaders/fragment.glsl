@@ -1,10 +1,10 @@
 uniform sampler2D sampler_texture;
 
-// uniform vec3 light_pos; // define coordenadas de posicao da luz
-uniform float ka; // coeficiente de reflexao ambiente
-uniform float kd; // coeficiente de reflexao difusa
-uniform float ks; // coeficiente de reflexao difusa
-uniform float ns; // coeficiente de reflexao difusa
+// uniform vec3 light_pos; // 
+uniform float ka; 
+uniform float kd; 
+uniform float ks; 
+uniform float ns; 
 
 uniform vec3 view_pos;
 
@@ -17,11 +17,10 @@ uniform float lights_intensity[MAX_LIGHTS];
 uniform float lights_reach[MAX_LIGHTS];
 uniform int index_max;
 
-// Luz que acompanha o lobo
-uniform vec3 wolf_position;
-uniform vec3 wolf_color;
-uniform float wolf_intensity;
-uniform float wolf_reach;
+// Luz que acompanha a camera
+uniform vec3 camera_color;
+uniform float camera_intensity;
+uniform float camera_reach;
 
 varying vec3 out_position; // recebido do vertex shader
 varying vec2 out_texture;
@@ -44,7 +43,7 @@ void main(){
         );
     }
 
-    sum += phong(wolf_position, wolf_color, wolf_reach, wolf_intensity);
+    sum += phong(view_pos, camera_color, camera_reach, camera_intensity);
     
     vec4 texture = texture2D(sampler_texture, out_texture);
     vec4 result = vec4(sum, 1.0) * texture; // aplica iluminacao
